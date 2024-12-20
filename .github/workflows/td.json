@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:637423357373:task-definition/hello-service-task:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:654654225250:task-definition/hello-task:1",
     "containerDefinitions": [
         {
             "name": "hello-service",
-            "image": "637423357373.dkr.ecr.us-east-1.amazonaws.com/hello-service-ecr:latest",
+            "image": "654654225250.dkr.ecr.us-east-1.amazonaws.com/hello-service-ecr:latest",
             "cpu": 0,
             "portMappings": [
                 {
@@ -23,7 +23,7 @@
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/hello-service-task",
+                    "awslogs-group": "/ecs/hello-task",
                     "mode": "non-blocking",
                     "awslogs-create-group": "true",
                     "max-buffer-size": "25m",
@@ -35,8 +35,8 @@
             "systemControls": []
         }
     ],
-    "family": "hello-service-task",
-    "executionRoleArn": "arn:aws:iam::637423357373:role/ecsTaskExecutionRole",
+    "family": "hello-task",
+    "executionRoleArn": "arn:aws:iam::654654225250:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
     "revision": 1,
     "volumes": [],
@@ -84,7 +84,8 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-12-19T18:33:17.174Z",
-    "registeredBy": "arn:aws:iam::637423357373:user/cloud_user",
+    "registeredAt": "2024-12-20T04:31:47.155Z",
+    "registeredBy": "arn:aws:iam::654654225250:user/cloud_user",
+    "enableFaultInjection": false,
     "tags": []
 }
