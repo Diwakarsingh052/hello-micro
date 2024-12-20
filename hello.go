@@ -16,7 +16,7 @@ func main() {
 			c.String(http.StatusBadRequest, "Name is required")
 			return
 		}
-		c.String(200, "Hello -----"+" "+name+"!")
+		c.String(200, "Hello v1"+" "+name+"!")
 	})
 	log.Println("Listening on port 80")
 	r.Run(":80")
