@@ -58,7 +58,7 @@ jobs:
 
     - name: Run tests
       id: run-tests
-      run: go test micro-1/...
+      run: go test ./...
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1

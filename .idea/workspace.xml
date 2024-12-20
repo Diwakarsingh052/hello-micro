@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="375980b0-8e49-47e4-b684-fff86c174050" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/aws.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/aws.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/micro-1/handlers/h.go" beforeDir="false" afterPath="$PROJECT_DIR$/micro-1/handlers/h.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
