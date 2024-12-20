@@ -101,3 +101,56 @@ jobs:
         service: ${{ env.ECS_SERVICE }}
         cluster: ${{ env.ECS_CLUSTER }}
         wait-for-service-stability: true
+
+
+#Step 1: Checking Out Your Code
+#--------------------------------
+#- Uses 'actions/checkout' to fetch code from your GitHub repository.
+#- Provides the runner (virtual machine) with access to the source code.
+#- Required for performing tasks like testing, building, and deploying.
+#
+#Step 2: Running Tests
+#----------------------
+#- Command: `go test ./...`
+#- Executes tests written for your application in the Go language.
+#- Validates application functionality before proceeding to deployment.
+#- Stops the workflow if a test fails (to avoid deploying broken code).
+#
+#Step 3: Configuring AWS Credentials
+#------------------------------------
+#- Action: `aws-actions/configure-aws-credentials`
+#- Purpose: Logs into AWS using credentials stored as GitHub secrets.
+#  - `AWS_ACCESS_KEY_ID`: AWS user access key.
+#  - `AWS_SECRET_ACCESS_KEY`: AWS user secret access key.
+#  - `aws-region`: The AWS region, e.g., `us-east-1`.
+#- Ensures the workflow can securely interact with AWS services like ECR and ECS.
+#
+#Step 4: Logging Into Amazon ECR
+#--------------------------------
+#- Action: `aws-actions/amazon-ecr-login`
+#- Authenticates the workflow with Amazon ECR (Elastic Container Registry).
+#- Allows pushing Docker images to ECR for storage and later deployment.
+#
+#Step 5: Building, Tagging, and Pushing Docker Images
+#-----------------------------------------------------
+#- Actions:
+#  - `docker build` creates the Docker image with application code and dependencies.
+#  - `docker tag` assigns a unique identifier (e.g., commit hash) to the image.
+#  - `docker push` uploads the image to Amazon ECR.
+#- Purpose:
+#  - Package your application into a lightweight, portable container.
+#  - Upload it to ECR for deployment in Amazon ECS.
+#
+#Step 6: Filling In the Updated Docker Image in the ECS Task Definition
+#-----------------------------------------------------------------------
+#- Action: `aws-actions/amazon-ecs-render-task-definition`
+#- Updates the ECS Task Definition with the latest Docker image pushed to ECR.
+#- Ensures that the container definition uses the new image version during deployment.
+#
+#Step 7: Deploying the Updated Task Definition to Amazon ECS
+#------------------------------------------------------------
+#- Action: `aws-actions/amazon-ecs-deploy-task-definition`
+#- Applies the updated Task Definition to the specified ECS Service in a Cluster.
+#- ECS Service: A long-running instance of your application (e.g., backend API).
+#- ECS Cluster: A group of computing resources (EC2 instances or Fargate) that host containers.
+#- Process waits until ECS ensures the service is stable before marking deployment as complete.
